@@ -14,7 +14,7 @@ const postAddress = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al agregar la direccion:", error.message);
         res.status(500).json({
-            error: "Error al agregar la direccion",
+            msg: "Error al agregar la direccion",
         });
     }
 };
@@ -34,7 +34,7 @@ const getAddress = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al leer direcciones:", error.message);
         res.status(500).json({
-            error: "Error al leer direcciones",
+            msg: "Error al leer direcciones",
         });
     }
 };
@@ -61,7 +61,7 @@ const patchAddress = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al editar direccion:", error.message);
         res.status(500).json({
-            error: "Error al editar direccion",
+            msg: "Error al editar direccion",
         });
     }
 };
@@ -82,7 +82,7 @@ const deleteAddress = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al eliminar direccion:", error.message);
         res.status(500).json({
-            error: "Error al eliminar direccion",
+            msg: "Error al eliminar direccion",
         });
     }
 };

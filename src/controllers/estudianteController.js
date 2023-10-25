@@ -22,7 +22,7 @@ const postEstudiante = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al crear estudiante:", error.message);
         res.status(500).json({
-            error: "Error al crear estudiante",
+            msg: "Error al crear estudiante",
         });
     }
 };
@@ -40,7 +40,7 @@ const getEstudiante = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al leer estudiantes:", error.message);
         res.status(500).json({
-            error: "Error al leer estudiantes",
+            msg: "Error al leer estudiantes",
         });
     }
 };
@@ -59,7 +59,7 @@ const getEstudianteById = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al leer estudiante:", error.message);
         res.status(500).json({
-            error: "Error al leer estudiante",
+            msg: "Error al leer estudiante",
         });
     }
 };
@@ -67,18 +67,28 @@ const getEstudianteById = async (req = request, res = response) => {
 // READ ////////////////////////////////////////////////////////////////////////////////////////////////////
 const patchEstudiante = async (req = request, res = response) => {
     const { id } = req.params;
-    const { last_name, middle_name, first_name, gender } = req.body;
+    const { last_name, middle_name, first_name, gender, active } = req.body;
     const query = `
   UPDATE student
   SET
     last_name = ?,
     middle_name = ?,
     first_name = ?,
-    gender = ?
+    gender = ?,
+    active = ?
   WHERE student_id = ?
 `;
+    const activeCon = active === "true" ? 1 : 0;
+
     try {
-        await db.query(query, [last_name, middle_name, first_name, gender,id]);
+        await db.query(query, [
+            last_name,
+            middle_name,
+            first_name,
+            gender,
+            activeCon,
+            id,
+        ]);
 
         res.status(201).json({
             msg: "Estudiantes editado correctamente",
@@ -86,7 +96,7 @@ const patchEstudiante = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al editar estudiante:", error.message);
         res.status(500).json({
-            error: "Error al editar estudiante",
+            msg: "Error al editar estudiante",
         });
     }
 };
@@ -106,7 +116,7 @@ const deleteEstudiante = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al eliminar estudiante:", error.message);
         res.status(500).json({
-            error: "Error al eliminar estudiante",
+            msg: "Error al eliminar estudiante",
         });
     }
 };

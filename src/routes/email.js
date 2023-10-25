@@ -22,16 +22,18 @@ router.post(
             .custom(studentExistePorId) // Verifica si el estudiante existe
             .notEmpty()
             .withMessage("El ID del estudiante es obligatorio"),
+            
         // Validación del campo "email".
         check("email")
             .isEmail()
+            .toUpperCase()
             .withMessage("No es un correo válido")
             .custom(emailNoExiste) // Verifica si el correo electrónico no existe
             .notEmpty()
             .withMessage("La dirección es requerida"),
         // Validación del campo "email_type".
         check("email_type")
-            .isIn(["Personal", "Work", "Other"])
+            .isIn(["PERSONAL", "WORK", "OTHER"])
             .withMessage("Tiene que ser un valor válido"),
         // Middleware para validar los campos.
         validarCampos,
@@ -69,7 +71,7 @@ router.patch(
             .withMessage("La dirección es requerida"),
         // Validación del campo "email_type".
         check("email_type")
-            .isIn(["Personal", "Work", "Other"])
+            .isIn(["PERSONAL", "WORK", "OTHER"])
             .withMessage("Tiene que ser un valor válido"),
         // Middleware para validar los campos.
         validarCampos,

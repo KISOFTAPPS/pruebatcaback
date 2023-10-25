@@ -14,7 +14,7 @@ const postPhone = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al agregar el telefono:", error.message);
         res.status(500).json({
-            error: "Error al agregar el telefono",
+            msg: "Error al agregar el telefono",
         });
     }
 };
@@ -33,7 +33,7 @@ const getPhones = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al leer teléfonos:", error.message);
         res.status(500).json({
-            error: "Error al leer teléfonos",
+            msg: "Error al leer teléfonos",
         });
     }
 };
@@ -60,7 +60,7 @@ const patchPhone = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al editar teléfono:", error.message);
         res.status(500).json({
-            error: "Error al editar teléfono",
+            msg: "Error al editar teléfono",
         });
     }
 };
@@ -81,7 +81,7 @@ const deletePhone = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al eliminar teléfono:", error.message);
         res.status(500).json({
-            error: "Error al eliminar teléfono",
+            msg: "Error al eliminar teléfono",
         });
     }
 };

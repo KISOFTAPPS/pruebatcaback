@@ -19,6 +19,7 @@ router.post(
         // Validación del campo "last_name".
         check("last_name")
             .isString()
+            .toUpperCase()
             .notEmpty()
             .withMessage("El apellido es requerido")
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/i)
@@ -26,12 +27,14 @@ router.post(
         // Validación del campo "middle_name" (opcional).
         check("middle_name")
             .isString()
+            .toUpperCase()
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/i)
             .withMessage("El segundo nombre solo admite letras y espacios")
             .optional({ nullable: true, checkFalsy: true }),
         // Validación del campo "first_name".
         check("first_name")
             .isString()
+            .toUpperCase()
             .notEmpty()
             .withMessage("El nombre es requerido")
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/i)
@@ -39,7 +42,7 @@ router.post(
         // Validación del campo "gender".
         check("gender")
             .notEmpty()
-            .isIn(["Male", "Female", "Other"])
+            .isIn(["MALE", "FEMALE", "OTHER"])
             .withMessage("Tiene que ser un valor válido"),
         // Middleware para validar los campos.
         validarCampos,
@@ -79,6 +82,7 @@ router.patch(
         // Validación del campo "last_name".
         check("last_name")
             .isString()
+            .toUpperCase()
             .notEmpty()
             .withMessage("El apellido es requerido")
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/i)
@@ -86,19 +90,27 @@ router.patch(
         // Validación del campo "middle_name" (opcional).
         check("middle_name")
             .isString()
+            .toUpperCase()
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/i)
             .withMessage("El segundo nombre solo admite letras y espacios")
             .optional({ nullable: true, checkFalsy: true }),
         // Validación del campo "first_name".
         check("first_name")
             .isString()
+            .toUpperCase()
             .notEmpty()
             .withMessage("El nombre es requerido")
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/i)
             .withMessage("El nombre solo admite letras y espacios"),
         // Validación del campo "gender".
         check("gender")
-            .isIn(["Male", "Female", "Other"])
+            .isIn(["MALE", "FEMALE", "OTHER"])
+            .withMessage("Tiene que ser un valor válido"),
+        check("active")
+            .trim()
+            .isIn(["true", "false"])
+            .toLowerCase()
+            .isBoolean("Solo booleanos")
             .withMessage("Tiene que ser un valor válido"),
         // Middleware para validar los campos.
         validarCampos,

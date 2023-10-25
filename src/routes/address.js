@@ -28,11 +28,13 @@ router.post(
         // Validación del campo "address_line".
         check("address_line")
             .isString()
+            .toUpperCase()
             .notEmpty()
             .withMessage("La dirección es requerida"),
         // Validación del campo "city".
         check("city")
             .isString()
+            .toUpperCase()
             .notEmpty()
             .withMessage("La ciudad es requerida"),
         // Validación del campo "zip_postcode".
@@ -48,6 +50,7 @@ router.post(
         // Validación del campo "state".
         check("state")
             .isString()
+            .toUpperCase()
             .notEmpty()
             .withMessage("El estado es requerido"),
         // Middleware para validar los campos.
@@ -80,6 +83,7 @@ router.patch(
         // Validación del campo "id".
         check("id")
             .isNumeric()
+            
             .withMessage("El ID solo debe contener números")
             .custom(addressExiste) // Verifica si la dirección existe
             .notEmpty()
@@ -87,6 +91,7 @@ router.patch(
         // Validación del campo "address_line".
         check("address_line")
             .isString()
+            .toUpperCase()
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ0-9\s]+$/i)
             .withMessage("La dirección solo admite letras, números y espacios")
             .notEmpty()
@@ -94,6 +99,7 @@ router.patch(
         // Validación del campo "city".
         check("city")
             .isString()
+            .toUpperCase()
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/i)
             .withMessage("El nombre de la ciudad solo admite letras y espacios")
             .notEmpty()
@@ -109,6 +115,7 @@ router.patch(
         // Validación del campo "state".
         check("state")
             .isString()
+            .toUpperCase()
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]+$/i)
             .withMessage("El nombre del estado solo admite letras y espacios")
             .notEmpty()

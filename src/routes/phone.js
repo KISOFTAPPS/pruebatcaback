@@ -40,7 +40,7 @@ router.post(
             .isString()
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i)
             .withMessage("Solo admite letras sin espacios")
-            .isIn(["Mobile", "Home", "Work", "Other"])
+            .isIn(["MOBILE", "HOME", "WORK", "OTHER"])
             .withMessage("Debe ser un valor válido")
             .notEmpty()
             .withMessage("El tipo de teléfono es requerido"),
@@ -111,7 +111,7 @@ router.patch(
             .isString()
             .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i)
             .withMessage("Solo admite letras sin espacios")
-            .isIn(["Mobile", "Home", "Work", "Other"])
+            .isIn(["MOBILE", "HOME", "WORK", "OTHER"])
             .withMessage("Debe ser un valor válido")
             .notEmpty()
             .withMessage("El tipo de teléfono es requerido"),

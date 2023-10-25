@@ -14,7 +14,7 @@ const postEmail = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al agregar el email:", error.message);
         res.status(500).json({
-            error: "Error al agregar el email",
+            msg: "Error al agregar el email",
         });
     }
 };
@@ -33,7 +33,7 @@ const getEmail = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al leer emails:", error.message);
         res.status(500).json({
-            error: "Error al leer emails",
+            msg: "Error al leer emails",
         });
     }
 };
@@ -53,7 +53,7 @@ const patchEmail = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al editar email:", error.message);
         res.status(500).json({
-            error: "Error al editar email",
+            msg: "Error al editar email",
         });
     }
 };
@@ -74,7 +74,7 @@ const deleteEmail = async (req = request, res = response) => {
     } catch (error) {
         console.error("Error al eliminar email:", error.message);
         res.status(500).json({
-            error: "Error al eliminar email",
+            msg: "Error al eliminar email",
         });
     }
 };
