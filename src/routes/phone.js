@@ -37,9 +37,6 @@ router.post(
             .withMessage("El teléfono es requerido"),
         // Valida el tipo de teléfono.
         check("phone_type")
-            .isString()
-            .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i)
-            .withMessage("Solo admite letras sin espacios")
             .isIn(["MOBILE", "HOME", "WORK", "OTHER"])
             .withMessage("Debe ser un valor válido")
             .notEmpty()
@@ -108,9 +105,6 @@ router.patch(
             .withMessage("El teléfono es requerido"),
         // Valida el tipo de teléfono.
         check("phone_type")
-            .isString()
-            .matches(/^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i)
-            .withMessage("Solo admite letras sin espacios")
             .isIn(["MOBILE", "HOME", "WORK", "OTHER"])
             .withMessage("Debe ser un valor válido")
             .notEmpty()

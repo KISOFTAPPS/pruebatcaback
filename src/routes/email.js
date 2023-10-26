@@ -7,7 +7,12 @@ const {
     emailExiste,
 } = require("../helpers/dbValidators");
 
-const { postEmail, getEmail, patchEmail, deleteEmail } = require("../controllers/emailController");
+const {
+    postEmail,
+    getEmail,
+    patchEmail,
+    deleteEmail,
+} = require("../controllers/emailController");
 
 const router = Router();
 
@@ -22,7 +27,7 @@ router.post(
             .custom(studentExistePorId) // Verifica si el estudiante existe
             .notEmpty()
             .withMessage("El ID del estudiante es obligatorio"),
-            
+
         // Validación del campo "email".
         check("email")
             .isEmail()
@@ -34,6 +39,7 @@ router.post(
         // Validación del campo "email_type".
         check("email_type")
             .isIn(["PERSONAL", "WORK", "OTHER"])
+            .notEmpty()
             .withMessage("Tiene que ser un valor válido"),
         // Middleware para validar los campos.
         validarCampos,
@@ -72,6 +78,7 @@ router.patch(
         // Validación del campo "email_type".
         check("email_type")
             .isIn(["PERSONAL", "WORK", "OTHER"])
+            .notEmpty()
             .withMessage("Tiene que ser un valor válido"),
         // Middleware para validar los campos.
         validarCampos,

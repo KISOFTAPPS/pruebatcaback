@@ -23,7 +23,7 @@ const StudentTables = async () => {
       city VARCHAR(100) NOT NULL,
       zip_postcode VARCHAR(45) NOT NULL,
       state VARCHAR(100) NOT NULL,
-      address_type ENUM('HOME', 'WORK', 'OTHER'),
+      address_type ENUM('HOME', 'WORK', 'OTHER') NOT NULL,
       created_on DATETIME DEFAULT NOW(),
       updated_on DATETIME DEFAULT NOW() ON UPDATE NOW(),
       FOREIGN KEY (student_id) REFERENCES student(student_id) ON DELETE CASCADE
@@ -33,7 +33,7 @@ const StudentTables = async () => {
     CREATE TABLE IF NOT EXISTS email (
       email VARCHAR(100) PRIMARY KEY,
       student_id INT,
-      email_type ENUM('PERSONAL', 'WORK', 'OTHER'),
+      email_type ENUM('PERSONAL', 'WORK', 'OTHER') NOT NULL,
       created_on DATETIME DEFAULT NOW(),
       updated_on DATETIME DEFAULT NOW() ON UPDATE NOW(),
       FOREIGN KEY (student_id) REFERENCES student(student_id) ON DELETE CASCADE
@@ -43,10 +43,10 @@ const StudentTables = async () => {
   CREATE TABLE IF NOT EXISTS phone (
     phone_id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT,
-    phone VARCHAR(100),
+    phone VARCHAR(100) NOT NULL,
     phone_type ENUM('MOBILE', 'HOME', 'WORK', 'OTHER'),
-    country_code VARCHAR(5),
-    area_code VARCHAR(5),
+    country_code VARCHAR(5) NOT NULL,
+    area_code VARCHAR(5) NOT NULL,
     created_on DATETIME DEFAULT NOW(),
     updated_on DATETIME DEFAULT NOW() ON UPDATE NOW(),
     FOREIGN KEY (student_id) REFERENCES student(student_id) ON DELETE CASCADE

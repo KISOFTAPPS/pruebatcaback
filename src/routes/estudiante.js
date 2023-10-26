@@ -105,6 +105,7 @@ router.patch(
         // Validación del campo "gender".
         check("gender")
             .isIn(["MALE", "FEMALE", "OTHER"])
+            .notEmpty()
             .withMessage("Tiene que ser un valor válido"),
         check("active")
             .trim()

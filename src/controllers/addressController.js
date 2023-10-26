@@ -5,7 +5,7 @@ const { db } = require("../db/dbConfig");
 const postAddress = async (req = request, res = response) => {
     const { id } = req.params;
     const { address_line, city, zip_postcode, state, address_type } = req.body;
-    const query = `INSERT INTO address (student_id, address_line, city, zip_postcode, state,address_type) VALUES (?, ?, ?, ?, ?, ?)`;
+    const query = `INSERT INTO address (student_id, address_line, city, zip_postcode, state, address_type) VALUES (?, ?, ?, ?, ?, ?)`;
     try {
         await db.query(query, [
             id,

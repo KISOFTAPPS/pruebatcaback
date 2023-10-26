@@ -56,7 +56,7 @@ router.post(
         // Validación del campo "address_type".
         check("address_type")
             .isIn(["HOME", "WORK", "OTHER"])
-            .toUpperCase()
+            .withMessage("Solo valores validos en address_type")
             .notEmpty()
             .withMessage("El tipo es requerido"),
         // Middleware para validar los campos.
@@ -129,7 +129,7 @@ router.patch(
         // Validación del campo "address_type".
         check("address_type")
             .isIn(["HOME", "WORK", "OTHER"])
-            .toUpperCase()
+            .withMessage("Solo valores validos en address_type")
             .notEmpty()
             .withMessage("El tipo es requerido"),
         // Middleware para validar los campos.
