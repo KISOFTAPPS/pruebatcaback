@@ -55,7 +55,7 @@ router.post(
             .withMessage("El estado es requerido"),
         // Validación del campo "address_type".
         check("address_type")
-            .isIn(["PERSONAL", "WORK", "OTHER"])
+            .isIn(["HOME", "WORK", "OTHER"])
             .toUpperCase()
             .notEmpty()
             .withMessage("El tipo es requerido"),
@@ -128,7 +128,7 @@ router.patch(
             .withMessage("El nombre del estado es requerido"),
         // Validación del campo "address_type".
         check("address_type")
-            .isIn(["PERSONAL", "WORK", "OTHER"])
+            .isIn(["HOME", "WORK", "OTHER"])
             .toUpperCase()
             .notEmpty()
             .withMessage("El tipo es requerido"),
