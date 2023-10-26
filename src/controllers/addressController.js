@@ -4,10 +4,17 @@ const { db } = require("../db/dbConfig");
 // CREATE ////////////////////////////////////////////////////////////////////////////////////////////////////
 const postAddress = async (req = request, res = response) => {
     const { id } = req.params;
-    const { address_line, city, zip_postcode, state } = req.body;
-    const query = `INSERT INTO address (student_id, address_line, city, zip_postcode, state) VALUES (?, ?, ?, ?, ?)`;
+    const { address_line, city, zip_postcode, state, address_type } = req.body;
+    const query = `INSERT INTO address (student_id, address_line, city, zip_postcode, state,address_type) VALUES (?, ?, ?, ?, ?, ?)`;
     try {
-        await db.query(query, [id, address_line, city, zip_postcode, state]);
+        await db.query(query, [
+            id,
+            address_line,
+            city,
+            zip_postcode,
+            state,
+            address_type,
+        ]);
         res.status(201).json({
             msg: "Se agrego la direccion correctamente",
         });
@@ -26,7 +33,6 @@ const getAddress = async (req = request, res = response) => {
     try {
         const [rows] = await db.query(query, [id]);
 
-
         res.status(200).json({
             msg: "Direcciones obtenidas correctamente",
             direcciones: rows,
@@ -42,18 +48,26 @@ const getAddress = async (req = request, res = response) => {
 // UPDATE ////////////////////////////////////////////////////////////////////////////////////////////////////
 const patchAddress = async (req = request, res = response) => {
     const { id } = req.params;
-    const { address_line, city, zip_postcode, state } = req.body;
+    const { address_line, city, zip_postcode, state, address_type } = req.body;
     const query = `
   UPDATE address
   SET
   address_line = ?,
   city = ?,
   zip_postcode = ?, 
-  state = ?
+  state = ?,
+  address_type = ?
   WHERE address_id = ?
 `;
     try {
-        await db.query(query, [address_line, city, zip_postcode, state,id]);
+        await db.query(query, [
+            address_line,
+            city,
+            zip_postcode,
+            state,
+            address_type,
+            id,
+        ]);
 
         res.status(201).json({
             msg: "Direccion editada correctamente",

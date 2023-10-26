@@ -53,6 +53,12 @@ router.post(
             .toUpperCase()
             .notEmpty()
             .withMessage("El estado es requerido"),
+        // Validación del campo "address_type".
+        check("address_type")
+            .isIn(["PERSONAL", "WORK", "OTHER"])
+            .toUpperCase()
+            .notEmpty()
+            .withMessage("El tipo es requerido"),
         // Middleware para validar los campos.
         validarCampos,
     ],
@@ -83,7 +89,7 @@ router.patch(
         // Validación del campo "id".
         check("id")
             .isNumeric()
-            
+
             .withMessage("El ID solo debe contener números")
             .custom(addressExiste) // Verifica si la dirección existe
             .notEmpty()
@@ -120,6 +126,12 @@ router.patch(
             .withMessage("El nombre del estado solo admite letras y espacios")
             .notEmpty()
             .withMessage("El nombre del estado es requerido"),
+        // Validación del campo "address_type".
+        check("address_type")
+            .isIn(["PERSONAL", "WORK", "OTHER"])
+            .toUpperCase()
+            .notEmpty()
+            .withMessage("El tipo es requerido"),
         // Middleware para validar los campos.
         validarCampos,
     ],

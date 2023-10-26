@@ -23,6 +23,7 @@ const StudentTables = async () => {
       city VARCHAR(100) NOT NULL,
       zip_postcode VARCHAR(45) NOT NULL,
       state VARCHAR(100) NOT NULL,
+      address_type ENUM('HOME', 'WORK', 'OTHER'),
       created_on DATETIME DEFAULT NOW(),
       updated_on DATETIME DEFAULT NOW() ON UPDATE NOW(),
       FOREIGN KEY (student_id) REFERENCES student(student_id) ON DELETE CASCADE
